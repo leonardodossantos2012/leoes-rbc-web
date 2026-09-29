@@ -221,7 +221,7 @@ O RBC atende pessoas com deficiência. O site precisa dar exemplo:
 
 ## 11. Placeholders a substituir depois
 
-Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.todo`) ou como bloco cinza listrado (classe `.ph`). Para achar tudo: `grep -rn "PLACEHOLDER\|_AQUI\|SEU_ID\|GTM-XXXXXXX\|NUMERO_WHATSAPP\|00.000.000" --include=*.html --include=*.js --include=*.svg .`
+Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.todo`) ou como bloco cinza listrado (classe `.ph`). Para achar tudo: `grep -rn "PLACEHOLDER\|_AQUI\|SEU_ID\|GTM-XXXXXXX\|NUMERO_WHATSAPP\|NOME_PROFESSOR\|00.000.000" --include=*.html --include=*.js --include=*.svg .`
 
 | Placeholder | O que é | Onde está |
 |---|---|---|
@@ -233,6 +233,7 @@ Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.tod
 | `https://formspree.io/f/SEU_ID` | Endpoint dos formulários | `apoie.html` (2 formulários), `parceiros.html`, `contato.html` |
 | `00.000.000/0000-00` | CNPJ | Rodapé de todas as páginas, `apoie.html`, `privacidade.html` |
 | `EMAIL_ENCARREGADO` | E-mail do encarregado de dados (LGPD) | `privacidade.html` |
+| `NOME_PROFESSOR` + mini-bio + foto | Professores (nome, função, frentes, bio e foto quadrada) | Seção `#professores` em `sobre.html` |
 | `CONQUISTAS_AQUI` | Títulos e resultados da temporada | As 6 páginas em `projetos/` |
 | Logo da Solví | Logo do parceiro | Bloco `.logos` em `index.html` e `parceiros.html` |
 | Feed do Instagram | Widget do provedor escolhido | Bloco `<!-- INSTAGRAM FEED -->` em `index.html` |
