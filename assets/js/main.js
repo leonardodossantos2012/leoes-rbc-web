@@ -59,6 +59,65 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  /* ---------- Contadores animados ---------- */
+  function initCounters() {
+    var counters = document.querySelectorAll('[data-count]');
+    if (!counters.length || reduceMotion || !('IntersectionObserver' in window)) return;
+
+    function format(n) { return n.toLocaleString('pt-BR'); }
+
+    function animate(el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1600;
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = format(Math.round(target * eased)) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        animate(entry.target);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(function (el) {
+      // O HTML já traz o valor final (sem JS); o número animado é aria-hidden e há cópia em .sr-only
+      el.textContent = '0' + (el.getAttribute('data-suffix') || '');
+      io.observe(el);
+    });
+  }
+
+  /* ---------- Vídeo do hero: pausar/reproduzir ---------- */
+  function initVideos() {
+    document.querySelectorAll('video[data-bg-video]').forEach(function (video) {
+      var btn = video.parentElement.parentElement.querySelector('.video-toggle');
+      if (reduceMotion) video.pause();
+      if (!btn) return;
+      function sync() {
+        var playing = !video.paused;
+        btn.setAttribute('aria-pressed', String(!playing));
+        btn.querySelector('span').textContent = playing ? 'Pausar vídeo' : 'Reproduzir vídeo';
+      }
+      btn.addEventListener('click', function () {
+        if (video.paused) video.play(); else video.pause();
+      });
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      sync();
+    });
+  }
+
   initMenu();
   initYear();
+  initCounters();
+  initVideos();
 })();
