@@ -221,7 +221,7 @@ O RBC atende pessoas com deficiência. O site precisa dar exemplo:
 
 ## 11. Placeholders a substituir depois
 
-Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.todo`) ou como bloco cinza listrado (classe `.ph`). Para achar tudo: `grep -rn "PLACEHOLDER\|_AQUI\|SEU_ID\|GTM-XXXXXXX\|NUMERO_WHATSAPP\|ENDERECO_STUDIO_LION\|00.000.000" --include=*.html --include=*.js --include=*.svg .`
+Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.todo`) ou como bloco cinza listrado (classe `.ph`). Para achar tudo: `grep -rn "PLACEHOLDER\|_AQUI\|SEU_ID\|GTM-XXXXXXX\|NUMERO_WHATSAPP\|00.000.000" --include=*.html --include=*.js --include=*.svg .`
 
 | Placeholder | O que é | Onde está |
 |---|---|---|
