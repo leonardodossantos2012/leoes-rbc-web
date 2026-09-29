@@ -116,8 +116,181 @@
     });
   }
 
+  /* ---------- Eventos para o dataLayer (GTM) ---------- */
+  window.dataLayer = window.dataLayer || [];
+
+  function track(eventName, extra) {
+    var data = { event: eventName, page_path: location.pathname };
+    if (extra) for (var k in extra) data[k] = extra[k];
+    window.dataLayer.push(data);
+  }
+
+  function initTracking() {
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-track], a[href]');
+      if (!el) return;
+      var name = el.getAttribute('data-track');
+      if (!name) {
+        // Garante o rastreio de links adicionados sem data-track
+        var href = el.getAttribute('href') || '';
+        if (href.indexOf('instagram.com') !== -1) name = 'click_instagram';
+        else if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1) name = 'click_whatsapp';
+      }
+      if (name) track(name, { link_text: (el.textContent || '').trim().slice(0, 80) });
+    });
+  }
+
+  /* ---------- Copiar chave PIX ---------- */
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+    }
+    return legacyCopy(text);
+  }
+
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok) resolve(); else reject(new Error('copy failed'));
+    });
+  }
+
+  function initCopy() {
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      var source = document.querySelector(btn.getAttribute('data-copy'));
+      var feedback = btn.closest('div').parentElement.querySelector('.pix__feedback');
+      if (!source) return;
+      btn.addEventListener('click', function () {
+        copyText(source.textContent.trim()).then(function () {
+          if (feedback) feedback.textContent = 'Chave PIX copiada! Agora é só colar no app do seu banco.';
+        }, function () {
+          if (feedback) feedback.textContent = 'Não foi possível copiar. Selecione a chave e copie manualmente.';
+        });
+      });
+    });
+  }
+
+  /* ---------- Formulários (Formspree) ---------- */
+  var MESSAGES = {
+    required: 'Preencha este campo.',
+    email: 'Informe um e-mail válido, por exemplo nome@email.com.',
+    tel: 'Informe um telefone com DDD.'
+  };
+
+  function validateField(field) {
+    var value = field.value.trim();
+    var error = '';
+    if (field.required && !value) error = MESSAGES.required;
+    else if (value && field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) error = MESSAGES.email;
+    else if (value && field.type === 'tel' && value.replace(/\D/g, '').length < 10) error = MESSAGES.tel;
+
+    var msg = document.getElementById(field.id + '-erro');
+    if (error) field.setAttribute('aria-invalid', 'true'); else field.removeAttribute('aria-invalid');
+    if (msg) msg.textContent = error;
+    return !error;
+  }
+
+  function initForms() {
+    document.querySelectorAll('form[data-form]').forEach(function (form) {
+      var status = form.querySelector('.form__status');
+      var button = form.querySelector('button[type="submit"]');
+      var fields = form.querySelectorAll('input:not([type="hidden"]):not([name="_gotcha"]), select, textarea');
+      var attempted = false;
+
+      function setStatus(type, text) {
+        status.className = 'form__status' + (type ? ' is-' + type : '');
+        status.textContent = text;
+      }
+
+      fields.forEach(function (f) {
+        f.addEventListener('blur', function () { if (attempted) validateField(f); });
+        f.addEventListener('input', function () {
+          if (f.getAttribute('aria-invalid') === 'true') validateField(f);
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        attempted = true;
+
+        var firstInvalid = null;
+        fields.forEach(function (f) {
+          if (!validateField(f) && !firstInvalid) firstInvalid = f;
+        });
+        if (firstInvalid) {
+          setStatus('error', 'Confira os campos destacados e tente de novo.');
+          firstInvalid.focus();
+          return;
+        }
+
+        // Honeypot preenchido: provável robô. Finge sucesso sem enviar.
+        var trap = form.querySelector('[name="_gotcha"]');
+        if (trap && trap.value) {
+          form.reset();
+          setStatus('success', 'Mensagem enviada! Em breve entraremos em contato.');
+          return;
+        }
+
+        if (form.action.indexOf('SEU_ID') !== -1) {
+          console.warn('[RBC] Endpoint do Formspree não configurado: substitua SEU_ID no atributo action do formulário.');
+          setStatus('error', 'O envio de formulários ainda não está configurado. Por favor, fale com a gente pelo WhatsApp ou Instagram.');
+          return;
+        }
+
+        button.disabled = true;
+        setStatus('', 'Enviando...');
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        }).then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          form.reset();
+          attempted = false;
+          setStatus('success', 'Mensagem enviada! Obrigado, em breve entraremos em contato.');
+          track(form.getAttribute('data-form'));
+        }).catch(function () {
+          setStatus('error', 'Não foi possível enviar agora. Tente novamente em instantes ou fale com a gente pelo WhatsApp.');
+        }).then(function () {
+          button.disabled = false;
+        });
+      });
+    });
+  }
+
+  /* ---------- Mapa do Google (carrega só após clique) ---------- */
+  function initMaps() {
+    document.querySelectorAll('[data-map-load]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var box = btn.closest('[data-map-src]');
+        var iframe = document.createElement('iframe');
+        iframe.src = box.getAttribute('data-map-src');
+        iframe.title = 'Mapa com a localização do Studio Lion';
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        iframe.setAttribute('allowfullscreen', '');
+        box.innerHTML = '';
+        box.appendChild(iframe);
+        iframe.focus();
+      });
+    });
+  }
+
   initMenu();
   initYear();
   initCounters();
   initVideos();
+  initTracking();
+  initCopy();
+  initForms();
+  initMaps();
 })();
