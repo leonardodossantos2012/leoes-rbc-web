@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 118" width="100" height="118" role="img" aria-label="Escudo Leões RBC (placeholder)">
+  <!-- PLACEHOLDER: substituir pelo escudo oficial do RBC -->
+  <path d="M50 3 94 16v38c0 30-19 50-44 61C25 104 6 84 6 54V16Z" fill="#111111" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M50 12 85 22v32c0 24-15 41-35 50C30 95 15 78 15 54V22Z" fill="#C8102E"/>
+  <path d="M50 30c-11 0-19 8-19 19 0 7 3 12 8 16l-3 10 8-5c2 1 4 1 6 1s4 0 6-1l8 5-3-10c5-4 8-9 8-16 0-11-8-19-19-19Z" fill="#FFFFFF"/>
+  <text x="50" y="99" text-anchor="middle" font-family="Impact, 'Arial Narrow', Arial, sans-serif" font-size="15" fill="#FFFFFF" letter-spacing="1">RBC</text>
+</svg>
