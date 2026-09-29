@@ -24,7 +24,7 @@ Profissionalizar a presença digital do RBC com um site que:
 - **Fundação:** 2016, Caieiras-SP
 - **Missão:** "Amar o próximo como a nós mesmos" através do esporte
 - **Instagram:** [@leoesrbcaieiras](https://www.instagram.com/leoesrbcaieiras/)
-- **Sede:** Studio Lion, quadra society coberta usada para treinos, funcional PCD, Autismo em Movimento e cultos
+- **Sede:** Studio Lion (Av. Dr. Armando Pinto, 100, Centro, Caieiras-SP), quadra society coberta usada para treinos, funcional PCD, Autismo em Movimento e cultos
 - **Parceiro/patrocinador:** Solví (Essencis Ambiental)
 
 ### Frentes (dados do relatório 2025)
@@ -232,8 +232,6 @@ Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.tod
 | `GTM-XXXXXXX` | ID do Google Tag Manager | `assets/js/consent.js` (um único lugar) |
 | `https://formspree.io/f/SEU_ID` | Endpoint dos formulários | `apoie.html` (2 formulários), `parceiros.html`, `contato.html` |
 | `00.000.000/0000-00` | CNPJ | Rodapé de todas as páginas, `apoie.html`, `privacidade.html` |
-| `ENDERECO_STUDIO_LION` | Endereço da sede | Rodapé de todas as páginas, `contato.html`, `privacidade.html` |
-| URL do mapa | Incorporação do Google Maps com o endereço exato | `data-map-src` em `contato.html` |
 | `EMAIL_ENCARREGADO` | E-mail do encarregado de dados (LGPD) | `privacidade.html` |
 | `CONQUISTAS_AQUI` | Títulos e resultados da temporada | As 6 páginas em `projetos/` |
 | Logo da Solví | Logo do parceiro | Bloco `.logos` em `index.html` e `parceiros.html` |
