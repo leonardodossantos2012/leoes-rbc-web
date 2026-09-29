@@ -76,6 +76,7 @@ Regra geral: nada de dependências pesadas. O site precisa abrir rápido em 4G.
 ├── index.html            # Home
 ├── sobre.html            # História, missão, Studio Lion, fé
 ├── projetos.html         # Visão geral das frentes
+├── cronograma.html       # Cronograma semanal (horários e locais, filtro por local)
 ├── projetos/
 │   ├── amputados.html
 │   ├── leoas.html
