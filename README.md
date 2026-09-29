@@ -50,7 +50,7 @@ Profissionalizar a presença digital do RBC com um site que:
 - **Hospedagem:** GitHub Pages
 - **Domínio:** personalizado (sugestão: `leoesrbc.org.br`), configurado via arquivo `CNAME`
 - **HTTPS:** obrigatório (ativar "Enforce HTTPS" no GitHub Pages)
-- **Fontes:** Google Fonts (sugestão: Bebas Neue para títulos, Inter para texto)
+- **Fontes:** Bebas Neue (títulos) e Inter (texto), do Google Fonts, **hospedadas localmente** em `assets/fonts/` (sem requisição ao Google, melhor para desempenho e LGPD)
 - **Ícones:** SVG inline ou biblioteca leve (ex.: Lucide via CDN)
 - **Formulários:** Formspree (GitHub Pages não processa dados no servidor)
 
@@ -220,8 +220,30 @@ O RBC atende pessoas com deficiência. O site precisa dar exemplo:
 
 ## 11. Placeholders a substituir depois
 
-| Placeholder | O que é |
-|---|---|
+Conteúdo pendente aparece no site com contorno tracejado vermelho (classe `.todo`) ou como bloco cinza listrado (classe `.ph`). Para achar tudo: `grep -rn "PLACEHOLDER\|_AQUI\|SEU_ID\|GTM-XXXXXXX\|NUMERO_WHATSAPP\|ENDERECO_STUDIO_LION\|00.000.000" --include=*.html --include=*.js --include=*.svg .`
+
+| Placeholder | O que é | Onde está |
+|---|---|---|
+| `logo-escudo.svg` / `logo-wordmark.svg` | Logos oficiais do RBC | `assets/img/` (substituir os arquivos mantendo os nomes) |
+| Cores hexadecimais | Cores exatas do escudo | `:root` em `assets/css/style.css` |
+| `CHAVE_PIX_AQUI` + QR code | Dados de doação | `apoie.html` (`#pix-chave`) e `assets/img/pix-qrcode-placeholder.svg` |
+| `NUMERO_WHATSAPP` | WhatsApp oficial (formato `5511999999999`) | Todas as páginas (botão flutuante, rodapé, contato, parceiros) |
+| `GTM-XXXXXXX` | ID do Google Tag Manager | `assets/js/consent.js` (um único lugar) |
+| `https://formspree.io/f/SEU_ID` | Endpoint dos formulários | `apoie.html` (2 formulários), `parceiros.html`, `contato.html` |
+| `00.000.000/0000-00` | CNPJ | Rodapé de todas as páginas, `apoie.html`, `privacidade.html` |
+| `ENDERECO_STUDIO_LION` | Endereço da sede | Rodapé de todas as páginas, `contato.html`, `privacidade.html` |
+| URL do mapa | Incorporação do Google Maps com o endereço exato | `data-map-src` em `contato.html` |
+| `EMAIL_ENCARREGADO` | E-mail do encarregado de dados (LGPD) | `privacidade.html` |
+| `CONQUISTAS_AQUI` | Títulos e resultados da temporada | As 6 páginas em `projetos/` |
+| Logo da Solví | Logo do parceiro | Bloco `.logos` em `index.html` e `parceiros.html` |
+| Feed do Instagram | Widget do provedor escolhido | Bloco `<!-- INSTAGRAM FEED -->` em `index.html` |
+| Fotos e vídeos | Material captado pela 321takes | Blocos `.ph` (trocar por `<img>` WebP com `width`, `height`, `alt` e `loading="lazy"`; o hero tem exemplo de `<video>` comentado) |
+| `og-image.jpg` | Imagem de compartilhamento definitiva | `assets/img/og-image.jpg` (1200x630) |
+| Domínio no `CNAME` | Domínio final | `CNAME`, `sitemap.xml`, `robots.txt` e metas `canonical`/`og:url` de cada página |
+
+Usar imagens placeholder neutras (ex.: blocos com cor e texto indicando o que vai ali), nunca fotos de banco genéricas.
+
+---|---|
 | `logo-escudo.svg` / `logo-wordmark.svg` | Logos oficiais do RBC |
 | Cores hexadecimais | Cores exatas do escudo |
 | `CHAVE_PIX_AQUI` + QR code | Dados de doação |
@@ -265,16 +287,16 @@ Ao final de cada etapa, fazer um commit com mensagem clara em português.
 
 ## 14. Checklist de entrega
 
-- [ ] Todas as páginas navegáveis e responsivas (320px até desktop)
-- [ ] Nenhum link quebrado
-- [ ] Formulários enviando e mostrando confirmação
-- [ ] Botão de copiar PIX funcionando
-- [ ] Eventos aparecendo no `dataLayer` (conferir no console)
-- [ ] GTM só carrega após aceite dos cookies
-- [ ] Lighthouse mobile acima de 90 nas quatro categorias
-- [ ] Navegação por teclado ok em todas as páginas
-- [ ] `sitemap.xml`, `robots.txt` e `CNAME` presentes
-- [ ] Lista de placeholders pendentes atualizada
+- [x] Todas as páginas navegáveis e responsivas (320px até desktop)
+- [x] Nenhum link quebrado (links internos e âncoras verificados)
+- [ ] Formulários enviando e mostrando confirmação (validação e mensagens prontas; falta o endpoint real do Formspree)
+- [ ] Botão de copiar PIX funcionando (implementado; conferir manualmente no celular com a chave real)
+- [x] Eventos aparecendo no `dataLayer` (conferir no console)
+- [x] GTM só carrega após aceite dos cookies (testado com ID fictício; falta o ID real)
+- [x] Lighthouse mobile acima de 90 nas quatro categorias (100 em todas as páginas indexáveis, em teste local)
+- [x] Navegação por teclado ok em todas as páginas
+- [x] `sitemap.xml`, `robots.txt` e `CNAME` presentes
+- [x] Lista de placeholders pendentes atualizada
 
 ---
 
