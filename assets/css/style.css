@@ -941,3 +941,123 @@ a.logo-slot:hover { border-color: var(--red); color: var(--red-dark); }
 .consent .btn { min-height: 2.75rem; padding: 0.6rem 1.1rem; font-size: 0.875rem; }
 .consent .btn--outline { color: var(--white); }
 .consent .btn--outline:hover { background: var(--white); color: var(--black); }
+
+/* ---------- Cronograma semanal ---------- */
+.schedule-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1.75rem;
+}
+.schedule-filter[hidden] { display: none; }
+.schedule-filter__label { font-weight: 700; }
+.schedule-filter__options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.filter-btn {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--white);
+  font: 600 0.9375rem var(--font-body);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.filter-btn:hover { border-color: var(--white); }
+.filter-btn[aria-pressed="true"] { background: var(--red); border-color: var(--red); }
+
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  align-items: start;
+}
+
+.day {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  color: var(--black);
+  border-radius: var(--radius);
+  border-top: 5px solid var(--red);
+  box-shadow: var(--shadow);
+}
+.day[hidden] { display: none; }
+.day__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem 0.9rem;
+  border-bottom: 2px solid var(--gray);
+}
+.day__head h3 { margin: 0; font-size: 1.9rem; }
+.day__count {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  white-space: nowrap;
+}
+.day__today {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.55rem;
+  vertical-align: middle;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.day.is-today { outline: 4px solid var(--red-light); outline-offset: 3px; }
+
+.day__list { margin: 0; padding: 0; list-style: none; }
+
+.slot {
+  display: grid;
+  grid-template-columns: 6.75rem 1fr;
+  grid-template-areas: "time name" "time local";
+  column-gap: 1rem;
+  row-gap: 0.3rem;
+  padding: 1rem 1.25rem;
+}
+.slot + .slot { border-top: 1px solid var(--gray-300); }
+.slot[hidden] { display: none; }
+.slot p { margin: 0; }
+
+.slot__time {
+  grid-area: time;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.05;
+  color: var(--red-dark);
+  font-variant-numeric: tabular-nums;
+}
+.slot__name {
+  grid-area: name;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.slot__local {
+  grid-area: local;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  justify-self: start;
+  padding: 0.15rem 0.6rem 0.15rem 0.45rem;
+  background: var(--gray);
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--black);
+}
+.slot__local .icon { width: 1rem; height: 1rem; color: var(--red); }
+
+.schedule__note { margin-top: 1.5rem; font-size: 0.9375rem; color: var(--gray-400-on-dark); }
+.schedule__empty { padding: 1.5rem; background: var(--black-soft); border-radius: var(--radius); }

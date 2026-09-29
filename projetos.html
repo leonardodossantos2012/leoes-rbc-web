@@ -139,6 +139,99 @@
           </div>
         </li>
       </ul>
+    <p class="section-foot"><a class="link-arrow" href="#cronograma">Veja os horários da semana <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
+  </div>
+</section>
+
+<section class="section section--dark on-dark" id="cronograma" aria-labelledby="cronograma-titulo">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Cronograma semanal</p>
+      <h2 id="cronograma-titulo" class="bar">Horários das atividades</h2>
+      <p class="lead">Confira quando e onde acontece cada atividade do RBC durante a semana.</p>
+    </div>
+    <div class="schedule-filter" role="group" aria-labelledby="filtro-local" data-schedule-filter hidden>
+      <span class="schedule-filter__label" id="filtro-local">Filtrar por local:</span>
+      <div class="schedule-filter__options">
+        <button type="button" class="filter-btn" data-filter="" aria-pressed="true">Todos</button>
+        <button type="button" class="filter-btn" data-filter="eucalipto" aria-pressed="false">Eucalipto</button>
+        <button type="button" class="filter-btn" data-filter="studio-lion" aria-pressed="false">Studio Lion</button>
+        <button type="button" class="filter-btn" data-filter="jardim-do-russo" aria-pressed="false">Jardim do Russo</button>
+        <button type="button" class="filter-btn" data-filter="nacional" aria-pressed="false">Nacional</button>
+        <button type="button" class="filter-btn" data-filter="vila-rosina" aria-pressed="false">Vila Rosina</button>
+        <button type="button" class="filter-btn" data-filter="pinheiros" aria-pressed="false">Pinheiros</button>
+      </div>
+    </div>
+    <p class="sr-only" role="status" aria-live="polite" data-schedule-status></p>
+    <div class="schedule">
+        <article class="day" data-weekday="1" aria-labelledby="dia-1">
+          <header class="day__head">
+            <h3 id="dia-1">Segunda-feira</h3>
+            <span class="day__count">2 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="eucalipto"><p class="slot__time"><time datetime="16:00">16h</time> às <time datetime="19:00">19h</time></p><p class="slot__name">Social / Ipanema</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Eucalipto</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="17:00">17h</time> às <time datetime="21:00">21h</time></p><p class="slot__name">Functional Soccer / aberto ao público</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+          </ul>
+        </article>
+        <article class="day" data-weekday="2" aria-labelledby="dia-2">
+          <header class="day__head">
+            <h3 id="dia-2">Terça-feira</h3>
+            <span class="day__count">4 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="jardim-do-russo"><p class="slot__time"><time datetime="15:00">15h</time> às <time datetime="17:00">17h</time></p><p class="slot__name">Escolinha</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Jardim do Russo</p></li>
+            <li class="slot" data-local="nacional"><p class="slot__time"><time datetime="15:00">15h</time> às <time datetime="17:00">17h</time></p><p class="slot__name">Escolinha</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Nacional</p></li>
+            <li class="slot" data-local="eucalipto"><p class="slot__time"><time datetime="16:00">16h</time> às <time datetime="19:00">19h</time></p><p class="slot__name">Social / Leões</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Eucalipto</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="17:00">17h</time> às <time datetime="21:00">21h</time></p><p class="slot__name">Treino aberto ao público</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+          </ul>
+        </article>
+        <article class="day" data-weekday="3" aria-labelledby="dia-3">
+          <header class="day__head">
+            <h3 id="dia-3">Quarta-feira</h3>
+            <span class="day__count">2 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="eucalipto"><p class="slot__time"><time datetime="16:00">16h</time> às <time datetime="19:00">19h</time></p><p class="slot__name">Social / Ipanema</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Eucalipto</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="17:00">17h</time> às <time datetime="21:00">21h</time></p><p class="slot__name">Categorias de base / trabalho físico e muscular</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+          </ul>
+        </article>
+        <article class="day" data-weekday="4" aria-labelledby="dia-4">
+          <header class="day__head">
+            <h3 id="dia-4">Quinta-feira</h3>
+            <span class="day__count">4 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="jardim-do-russo"><p class="slot__time"><time datetime="15:00">15h</time> às <time datetime="17:00">17h</time></p><p class="slot__name">Escolinha</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Jardim do Russo</p></li>
+            <li class="slot" data-local="vila-rosina"><p class="slot__time"><time datetime="15:00">15h</time> às <time datetime="17:00">17h</time></p><p class="slot__name">Escolinha</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Vila Rosina</p></li>
+            <li class="slot" data-local="eucalipto"><p class="slot__time"><time datetime="16:00">16h</time> às <time datetime="19:00">19h</time></p><p class="slot__name">Social / Leões</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Eucalipto</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="17:00">17h</time> às <time datetime="21:00">21h</time></p><p class="slot__name">Aberto ao público</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+          </ul>
+        </article>
+        <article class="day" data-weekday="5" aria-labelledby="dia-5">
+          <header class="day__head">
+            <h3 id="dia-5">Sexta-feira</h3>
+            <span class="day__count">3 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="pinheiros"><p class="slot__time"><time datetime="15:00">15h</time> às <time datetime="17:00">17h</time></p><p class="slot__name">Escolinha de futebol</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Pinheiros</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="17:00">17h</time> às <time datetime="18:00">18h</time></p><p class="slot__name">Treino dos cadeirantes</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="18:00">18h</time> às <time datetime="20:00">20h</time></p><p class="slot__name">Categorias de base / trabalho físico e muscular</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+          </ul>
+        </article>
+        <article class="day" data-weekday="6" aria-labelledby="dia-6">
+          <header class="day__head">
+            <h3 id="dia-6">Sábado</h3>
+            <span class="day__count">3 atividades</span>
+          </header>
+          <ul class="day__list">
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="08:00">8h</time> às <time datetime="09:00">9h</time></p><p class="slot__name">Amputados</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+            <li class="slot" data-local="studio-lion"><p class="slot__time"><time datetime="09:00">9h</time> às <time datetime="12:00">12h</time></p><p class="slot__name">Turma do autismo</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Studio Lion</p></li>
+            <li class="slot" data-local="eucalipto"><p class="slot__time"><time datetime="09:00">9h</time> às <time datetime="12:00">12h</time></p><p class="slot__name">Futsal feminino</p><p class="slot__local"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="sr-only">Local: </span>Eucalipto</p></li>
+          </ul>
+        </article>
+    </div>
+    <p class="schedule__note">Horários sujeitos a alteração. Na dúvida, confirme pelo <a href="https://wa.me/NUMERO_WHATSAPP?text=Ol%C3%A1%21%20Vim%20pelo%20site%20do%20Le%C3%B5es%20RBC." target="_blank" rel="noopener" data-track="click_whatsapp">WhatsApp<span class="sr-only"> (abre em nova aba)</span></a>.</p>
   </div>
 </section>
 
@@ -204,6 +297,7 @@
         <li><a href="index.html">Início</a></li>
         <li><a href="sobre.html">Sobre o RBC</a></li>
         <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="projetos.html#cronograma">Horários</a></li>
         <li><a href="apoie.html" data-track="click_apoie">Apoie</a></li>
         <li><a href="parceiros.html">Parceiros</a></li>
         <li><a href="contato.html">Contato</a></li>

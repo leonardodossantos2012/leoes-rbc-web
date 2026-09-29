@@ -285,8 +285,59 @@
     });
   }
 
+  /* ---------- Cronograma semanal: dia atual e filtro por local ---------- */
+  function initSchedule() {
+    var schedule = document.querySelector('.schedule');
+    if (!schedule) return;
+    var days = schedule.querySelectorAll('.day');
+
+    // Destaca o dia de hoje (0 = domingo, sem atividades)
+    var today = schedule.querySelector('.day[data-weekday="' + new Date().getDay() + '"]');
+    if (today) {
+      today.classList.add('is-today');
+      var badge = document.createElement('span');
+      badge.className = 'day__today';
+      badge.textContent = 'Hoje';
+      today.querySelector('h3').appendChild(badge);
+    }
+
+    var filter = document.querySelector('[data-schedule-filter]');
+    var status = document.querySelector('[data-schedule-status]');
+    if (!filter) return;
+    filter.hidden = false;
+    var buttons = filter.querySelectorAll('[data-filter]');
+
+    filter.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-filter]');
+      if (!btn) return;
+      var local = btn.getAttribute('data-filter');
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+
+      var total = 0;
+      days.forEach(function (day) {
+        var visible = 0;
+        day.querySelectorAll('.slot').forEach(function (slot) {
+          var show = !local || slot.getAttribute('data-local') === local;
+          slot.hidden = !show;
+          if (show) visible++;
+        });
+        day.hidden = visible === 0;
+        var count = day.querySelector('.day__count');
+        if (count) count.textContent = visible + (visible === 1 ? ' atividade' : ' atividades');
+        total += visible;
+      });
+
+      if (status) {
+        status.textContent = local
+          ? total + (total === 1 ? ' atividade' : ' atividades') + ' em ' + btn.textContent + '.'
+          : 'Mostrando todas as atividades.';
+      }
+    });
+  }
+
   initMenu();
   initYear();
+  initSchedule();
   initCounters();
   initVideos();
   initTracking();
