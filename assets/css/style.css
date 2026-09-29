@@ -892,3 +892,27 @@ a.logo-slot:hover { border-color: var(--red); color: var(--red-dark); }
   text-underline-offset: 0.15em;
   cursor: pointer;
 }
+
+/* ---------- Banner de cookies ---------- */
+.consent {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 200;
+  max-width: 34rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  border-top: 4px solid var(--red);
+  border-radius: var(--radius);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+  font-size: 0.9375rem;
+}
+.consent__title { margin-bottom: 0.4rem; font-size: 1.6rem; }
+.consent p { margin-bottom: 1rem; color: #E6E6E6; }
+.consent a { color: var(--white); }
+.consent :focus-visible { outline-color: var(--white); }
+.consent .btn { min-height: 2.75rem; padding: 0.6rem 1.1rem; font-size: 0.875rem; }
+.consent .btn--outline { color: var(--white); }
+.consent .btn--outline:hover { background: var(--white); color: var(--black); }
